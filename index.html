@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GasdiskueLips | Ethereal Beauty AR</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-secondary-container": "#755e65",
+                    "surface-container-low": "#f5f3f3",
+                    "primary-fixed-dim": "#d7c1c7",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#f4dde3",
+                    "on-primary-container": "#746368",
+                    "surface-tint": "#6b5a5f",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#27171d",
+                    "surface-container": "#efeded",
+                    "on-surface": "#1b1c1c",
+                    "outline": "#7f7477",
+                    "surface-dim": "#dbd9d9",
+                    "primary": "#6b5a5f",
+                    "on-primary-fixed": "#24181c",
+                    "secondary": "#6e5960",
+                    "on-tertiary-container": "#676767",
+                    "tertiary": "#5e5e5f",
+                    "surface": "#fbf9f8",
+                    "secondary-fixed-dim": "#dbbfc7",
+                    "on-primary-fixed-variant": "#524348",
+                    "on-primary": "#ffffff",
+                    "secondary-fixed": "#f9dbe3",
+                    "inverse-on-surface": "#f2f0f0",
+                    "tertiary-fixed": "#e4e2e2",
+                    "inverse-primary": "#d7c1c7",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "error-container": "#ffdad6",
+                    "inverse-surface": "#303030",
+                    "on-background": "#1b1c1c",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "surface-variant": "#e4e2e2",
+                    "on-secondary": "#ffffff",
+                    "secondary-container": "#f9dbe3",
+                    "outline-variant": "#d0c3c6",
+                    "on-secondary-fixed-variant": "#554148",
+                    "tertiary-container": "#e8e6e6",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "on-error": "#ffffff",
+                    "on-surface-variant": "#4d4447",
+                    "background": "#fbf9f8",
+                    "on-error-container": "#93000a",
+                    "surface-bright": "#fbf9f8",
+                    "surface-container-high": "#eae8e7",
+                    "primary-container": "#f8e1e7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "margin-mobile": "16px",
+                    "margin-desktop": "48px",
+                    "gutter": "24px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "label-caps": ["DM Sans"],
+                    "headline-lg": ["Playfair Display"],
+                    "body-md": ["DM Sans"],
+                    "headline-xl": ["Playfair Display"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "body-sm": ["DM Sans"]
+            },
+            "fontSize": {
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #fbf9f8;
+            color: #1b1c1c;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at 70% 50%, #f9dbe3 0%, #fbf9f8 100%);
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary-container selection:text-primary">
+<!-- Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-[0_10px_30px_-15px_rgba(107,90,95,0.1)] transition-all duration-300 ease-in-out">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed-dim tracking-tight">
+                GasdiskueLips
+            </div>
+<div class="hidden md:flex gap-10 items-center">
+<a class="font-body-md text-body-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 transition-colors duration-300" href="#">Home</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="#">Products</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="#">About Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="#">Contact</a>
+</div>
+<button class="bg-primary text-on-primary px-8 py-2.5 rounded-full font-label-caps text-label-caps hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-sm">
+                Try AR
+            </button>
+</div>
+</nav>
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-[921px] flex items-center overflow-hidden hero-gradient">
+<div class="absolute inset-0 z-0 opacity-40">
+<div class="w-full h-full bg-[radial-gradient(#d7c1c7_1px,transparent_1px)] [background-size:32px_32px]"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-gutter items-center relative z-10">
+<div class="space-y-stack-lg">
+<span class="font-label-caps text-label-caps text-primary uppercase tracking-widest">Digital Beauty Revolution</span>
+<h1 class="font-headline-xl text-headline-xl text-on-surface leading-tight">
+                        Ethereal Shades,<br/>
+<span class="italic text-primary-fixed-dim">Virtually Perfect.</span>
+</h1>
+<p class="text-on-surface-variant max-w-md">
+                        Experience our signature lipstick collection through high-fidelity WebAR. Discover the perfect hue that complements your unique skin tone in real-time.
+                    </p>
+<div class="flex items-center gap-stack-md pt-4">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-full font-label-caps text-label-caps shadow-[0_20px_40px_-10px_rgba(107,90,95,0.3)] hover:-translate-y-1 transition-transform duration-300">
+                            Try AR Experience
+                        </button>
+<button class="border border-secondary text-secondary px-10 py-4 rounded-full font-label-caps text-label-caps hover:bg-secondary-container transition-colors duration-300">
+                            View Lookbook
+                        </button>
+</div>
+</div>
+<div class="relative group">
+<div class="absolute -inset-10 bg-primary-container/20 blur-3xl rounded-full group-hover:bg-primary-container/30 transition-all duration-700"></div>
+<img alt="Premium Lipstick Visual" class="relative z-10 w-full h-auto drop-shadow-2xl rounded-xl transition-transform duration-500 group-hover:scale-[1.02]" data-alt="A high-end, premium lipstick tube with a sleek gold and matte black finish, standing elegantly on a reflective glass surface. The lighting is ethereal and soft, casting delicate pink shadows that blend into a minimalist white and blush-toned background. The composition is clean and modern, evoking a sense of luxury boutique aesthetics and high-tech beauty innovation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuApnmAKooVc83Xi0mA2XccX03XVq0_kLH500VqrrgLTbX6CwrnNIw1St_97UMQj2potuN0CB0XhYEgZRVODg30s3I158fC4mlm8nUCZppMFYuydrs1gWYXNots_ChxJpE5ZUWH4ZkwtdQAH9DShNRLqIcZCOjD20j7ygM3HeAmNN1dFZrTKvITvatx7rN5q3wgE31Bh8VShUAb6nUIeuHbsA0ezIP3gMgCKtz5uy82bvt2GRb5QJ7Jl-XMwEDQh4FiBbAecDIiu1SfP"/>
+</div>
+</div>
+</section>
+<!-- Brand Introduction Section -->
+<section class="py-stack-lg bg-surface">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="flex flex-col md:flex-row gap-gutter items-center">
+<div class="md:w-1/3 text-center md:text-left">
+<h2 class="font-headline-lg text-headline-lg text-primary mb-stack-md">The Philosophy of Shine</h2>
+<div class="w-16 h-0.5 bg-primary-fixed-dim mx-auto md:mx-0"></div>
+</div>
+<div class="md:w-2/3">
+<p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                            GasdiskueLips was born at the intersection of artisanal cosmetic craftsmanship and cutting-edge augmented reality. We believe that choosing the right shade should be as effortless as wearing it. Our "Refined Minimalism" approach ensures that every pigment is curated for depth, longevity, and that elusive ethereal glow.
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Collection Bento Grid -->
+<section class="py-stack-lg bg-surface-container-low/30">
+<div class="max-w-container-max mx-auto px-margin-desktop">
+<div class="text-center mb-stack-lg">
+<span class="font-label-caps text-label-caps text-secondary">CURATED SELECTION</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-stack-sm">The Essential Five</h2>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter h-auto md:h-[600px]">
+<!-- Large Featured Item -->
+<div class="md:col-span-7 relative group overflow-hidden rounded-xl glass-card border border-white/40 shadow-[0_8px_30px_rgb(107,90,95,0.05)]">
+<img alt="Velvet Rose Shade" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A macro shot of a vibrant, creamy lipstick texture being applied, showing the rich pigment and velvety finish of a classic deep rose shade. The lighting is professional studio quality with soft highlights that accentuate the luxurious texture. The background is a clean, neutral cream color that maintains the sophisticated and minimalist brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUb3oLJpStd_5g0baBBXI8f2oDfIdjEDntz1HuhMDTbwCh8AHp1aXkTDwS8lhA8O4BM6z0pFPQ2-C0NKYulGies9MsXVRUCJJjvzbY2JXhvFKPKxqWk0B18Rnh6KHEaKcIJccc4-6aORed4wKmGqJZKIOGMeIaHFxE_5XMHHBjlr5L36mYQgW5zSLcHIO_2tCCVgEIBzJzq0q9zCOFQjOctrsWUGPxRQQxrwA6xeDbZn3rH8BhbOzrRamsX8YFMKhfPA-lLX3iYZfH"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+<div class="absolute bottom-0 left-0 p-8 text-on-primary">
+<h3 class="font-headline-lg text-headline-lg">Velvet Rose</h3>
+<p class="font-label-caps text-label-caps opacity-90">OUR SIGNATURE MATTE</p>
+</div>
+</div>
+<!-- Side Column -->
+<div class="md:col-span-5 grid grid-rows-2 gap-gutter">
+<div class="grid grid-cols-2 gap-gutter">
+<div class="relative group rounded-xl overflow-hidden glass-card border border-white/40">
+<img alt="Peach Dream Shade" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A close-up image of a pale peach lipstick shade in a minimalist white packaging, surrounded by soft white flower petals. The mood is light, airy, and feminine, perfectly aligned with a sophisticated, high-end beauty brand's aesthetic. High-key lighting creates a dreamlike, ethereal atmosphere with subtle pink-tinted shadows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWPo8Rjt3F258imMQB96icS8wiRt-gjbZwe-nb4Yw4-8VLW5Oy0jKWk3a4v3MwZ5ueFnTVdqCzrOQ42qDEH9JThnKZ2HjspPJI2v79xb6JxlULH0pI6TzVy9vurxS_C7IVWfuBoIx9t_bqs4wivfLH2ePi6Mo1YFWxFBqK05ZTNmsQL2g3fDYlpI4ZIERoUuklsAiqV0z_DeFeZ55AkBHznDId5jpOxz6v1COX0zGQrFBq5rxuOTPy1VIdU88tujOVMIPAgxguzmPr"/>
+<div class="absolute inset-x-0 bottom-0 p-4 bg-surface/90 backdrop-blur-sm">
+<p class="font-label-caps text-label-caps text-primary text-center">Peach Dream</p>
+</div>
+</div>
+<div class="relative group rounded-xl overflow-hidden glass-card border border-white/40">
+<img alt="Midnight Plum Shade" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A luxurious deep plum lipstick swatch on a smooth white porcelain surface, displaying a glossy, high-shine finish. The aesthetic is clean and modern, focusing on the quality and depth of the pigment. Soft ambient lighting creates a gentle glow around the edges, reinforcing the premium and ethereal brand image of GasdiskueLips." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDzvQnoLtyVA15BHoU3rx9FGZwlbZt7PXxtAmUWXTREtoCfinGksbAYdH39n3U5H2LsSRVd81h1uBHeu6CJcZ_eJjDTkbLCbofd7jJsHgMYBRtaM51bnPx0ha-yuN-Yi7zqMghBCDQ7zKHXYSv56Fb3ge2zqMgdC9iNcVeFjC8isH8xfoapQYbw_l8Pr7s_OLGhEZk5keG2Myp8kj2XNJ1VlpKwNuVyZb8ueoXqhK5J54SfNiQGHNkaHVXT46TjmNuM2oBKjnnNB2zX"/>
+<div class="absolute inset-x-0 bottom-0 p-4 bg-surface/90 backdrop-blur-sm">
+<p class="font-label-caps text-label-caps text-primary text-center">Midnight Plum</p>
+</div>
+</div>
+</div>
+<div class="relative group rounded-xl overflow-hidden glass-card border border-white/40">
+<img alt="Collection Preview" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A minimalist composition showing two lipstick tubes in shades of soft coral and dusty mauve, positioned artfully on a marble tray. The background is a blur of soft morning light coming through a window, creating a serene and sophisticated atmosphere. The color palette is dominated by whites, greys, and warm pink tones, maintaining a refined minimalism." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA_CxgE5ZpR3mWUnSXHxZhVe3hkT1sA_NS7KNoRmd_ng07nmjzaGaEfc9igGYYP8I1LGZK4OeI1WlrRfgHvhryrt9iun20Ve3P3bgIIIS2zPBPpQ9FCeqcgkQEcRS7NHsYOJJjIkde4vHT5ERD2j1YKIirZoiLu5QpUvwDLBRXU7nYMqpICjy8R0wMDSt3ip0kQuhdKQgLsgvjf-4JMozga7af3lGJ1_T22vqbMAUfzvEZaUPLbmbr61Y1hcUa1CLkQbbguOD_W9e7p"/>
+<div class="absolute inset-0 bg-secondary/20 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+<button class="bg-surface text-primary px-6 py-2 rounded-full font-label-caps text-label-caps">Shop All Shades</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AR Highlight Section -->
+<section class="py-stack-lg overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-desktop bg-primary-container/20 rounded-3xl p-12 md:p-20 relative">
+<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/4 w-96 h-96 bg-primary-fixed blur-3xl rounded-full opacity-30"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg items-center relative z-10">
+<div class="order-2 md:order-1">
+<div class="w-full aspect-[4/5] md:aspect-square bg-white rounded-2xl p-4 shadow-xl relative overflow-hidden">
+<div class="absolute inset-0 bg-neutral-100 flex items-center justify-center">
+<!-- Simulated Viewport -->
+<img alt="AR Demo Background" class="w-full h-full object-cover opacity-60 grayscale-[0.5]" data-alt="A high-tech digital representation of a facial AR filter, where a user's lips are highlighted with a glowing, semi-transparent pink interface. The background shows a modern, minimalist room with soft natural lighting. The overall visual style is sleek and futuristic, utilizing a sophisticated color palette of whites and soft blushes to illustrate the ease of a virtual try-on experience." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC8lsrnvrddbXgN_kZDwb-hOoms8CPmEfZ-jlAtFB2CWAbLcJp05Y1-Afukv_nBj6LECn2wccusfs3uhaTToNGkYoLoNGqEIWVZqE24LZEPkFRXTgeGNz5C7nVlKkulL3FSYt1vsjXeV9bjC0i8xxskZ0iEqGiPrHMCkpjIvPAWTUUtIj7G_9Fx5soHzZMhdkLBWYQoVnm049qpTAaqg8oVTT4gR7KC1zRqF1sQzSd3hKHpPX1MAIMKPLqG5FGvLu-mM1heHCi1UpOw"/>
+<div class="absolute inset-0 flex flex-col items-center justify-center space-y-4">
+<div class="w-24 h-24 rounded-full border-4 border-primary border-dashed animate-spin-slow"></div>
+<span class="font-label-caps text-label-caps text-primary bg-white/80 px-4 py-1 rounded-full">SCANNING FACE...</span>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2 space-y-stack-md text-center md:text-left">
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Precision Shade Matching</h2>
+<p class="text-on-surface-variant leading-relaxed">
+                            Our proprietary AR engine analyzes your unique undertones and ambient lighting to project how each shade will realistically appear on your lips. No more guesswork, just pure ethereal beauty at your fingertips.
+                        </p>
+<ul class="space-y-stack-sm pt-4">
+<li class="flex items-center gap-2 font-body-sm text-body-sm text-secondary">
+<span class="material-symbols-outlined text-primary" style="font-size: 18px;">check_circle</span>
+                                99% Color Accuracy
+                            </li>
+<li class="flex items-center gap-2 font-body-sm text-body-sm text-secondary">
+<span class="material-symbols-outlined text-primary" style="font-size: 18px;">check_circle</span>
+                                Real-time Light Simulation
+                            </li>
+<li class="flex items-center gap-2 font-body-sm text-body-sm text-secondary">
+<span class="material-symbols-outlined text-primary" style="font-size: 18px;">check_circle</span>
+                                One-Click Purchase
+                            </li>
+</ul>
+<div class="pt-stack-md">
+<button class="bg-on-surface text-surface px-12 py-4 rounded-full font-label-caps text-label-caps hover:bg-primary transition-colors duration-300">
+                                Launch AR Camera
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-stack-lg bg-surface dark:bg-surface-dim mt-20">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-stack-md">
+<div class="font-label-caps text-label-caps text-primary">
+                GASDISKULIPS
+            </div>
+<div class="flex gap-8">
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary transition-opacity duration-200 opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary transition-opacity duration-200 opacity-80 hover:opacity-100" href="#">Terms of Use</a>
+<a class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary transition-opacity duration-200 opacity-80 hover:opacity-100" href="#">University Link</a>
+</div>
+<p class="font-body-sm text-body-sm text-secondary dark:text-secondary-fixed-dim opacity-60">
+                © 2024 GasdiskueLips University Project. All rights reserved.
+            </p>
+</div>
+</footer>
+<script>
+        // Simple scroll interaction for the navigation bar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('py-2', 'bg-surface/95');
+                nav.classList.remove('py-4', 'bg-surface/80');
+            } else {
+                nav.classList.add('py-4', 'bg-surface/80');
+                nav.classList.remove('py-2', 'bg-surface/95');
+            }
+        });
+
+        // Add a subtle parallax effect to the hero image
+        window.addEventListener('mousemove', (e) => {
+            const heroImg = document.querySelector('section img');
+            const x = (e.clientX - window.innerWidth / 2) / 100;
+            const y = (e.clientY - window.innerHeight / 2) / 100;
+            heroImg.style.transform = `translate(${x}px, ${y}px) scale(1.02)`;
+        });
+    </script>
+<style>
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 8s linear infinite;
+        }
+    </style>
+</body></html>
