@@ -1,0 +1,299 @@
+<!DOCTYPE html><html class="light" lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Promotions | GasdiskueLips</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&amp;family=Playfair+Display:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-container": "#676767",
+                    "error": "#ba1a1a",
+                    "surface-tint": "#6b5a5f",
+                    "primary-fixed-dim": "#d7c1c7",
+                    "on-error-container": "#93000a",
+                    "surface-variant": "#e4e2e2",
+                    "on-secondary-container": "#755e65",
+                    "on-primary-fixed-variant": "#524348",
+                    "on-surface": "#1b1c1c",
+                    "on-primary": "#ffffff",
+                    "surface-container-high": "#eae8e7",
+                    "secondary-container": "#f9dbe3",
+                    "surface-container-low": "#f5f3f3",
+                    "inverse-surface": "#303030",
+                    "surface-bright": "#fbf9f8",
+                    "surface-container-highest": "#e4e2e2",
+                    "on-secondary-fixed": "#27171d",
+                    "tertiary-fixed": "#e4e2e2",
+                    "surface-dim": "#dbd9d9",
+                    "on-secondary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#d0c3c6",
+                    "surface": "#fbf9f8",
+                    "primary-container": "#f8e1e7",
+                    "on-surface-variant": "#4d4447",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-fixed-variant": "#554148",
+                    "inverse-on-surface": "#f2f0f0",
+                    "background": "#fbf9f8",
+                    "error-container": "#ffdad6",
+                    "on-primary-fixed": "#24181c",
+                    "surface-container": "#efeded",
+                    "on-tertiary-fixed": "#1b1c1c",
+                    "tertiary": "#5e5e5f",
+                    "inverse-primary": "#d7c1c7",
+                    "secondary-fixed-dim": "#dbbfc7",
+                    "on-background": "#1b1c1c",
+                    "tertiary-container": "#e8e6e6",
+                    "primary-fixed": "#f4dde3",
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#f9dbe3",
+                    "on-primary-container": "#746368",
+                    "secondary": "#6e5960",
+                    "outline": "#7f7477",
+                    "on-tertiary-fixed-variant": "#464747",
+                    "tertiary-fixed-dim": "#c7c6c6",
+                    "primary": "#6b5a5f"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "margin-desktop": "48px",
+                    "container-max": "1200px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Playfair Display"],
+                    "label-caps": ["DM Sans"],
+                    "headline-lg-mobile": ["Playfair Display"],
+                    "headline-xl": ["Playfair Display"],
+                    "body-md": ["DM Sans"],
+                    "body-sm": ["DM Sans"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "500"}],
+                    "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "fontWeight": "500"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(251, 249, 248, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+        .glow-shadow {
+            box-shadow: 0 20px 40px -10px rgba(107, 90, 95, 0.08);
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface-dim/80 backdrop-blur-md shadow-[0_10px_30px_-15px_rgba(107,90,95,0.1)]">
+<nav class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<div class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed-dim tracking-tight">GasdiskueLips</div>
+<div class="hidden md:flex items-center gap-stack-lg font-body-md text-body-md">
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary transition-colors duration-300" href="#">Home</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary transition-colors duration-300" href="#">Products</a>
+<a class="text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1" href="#">Promotions</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary transition-colors duration-300" href="#">About Us</a>
+<a class="text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary transition-colors duration-300" href="#">Contact</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps text-label-caps hover:opacity-90 transition-all duration-300">Try AR</button>
+<button class="md:hidden text-primary">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="pt-24 overflow-hidden">
+<!-- Hero Section -->
+<section class="relative px-margin-desktop mb-stack-lg max-w-container-max mx-auto">
+<div class="relative w-full aspect-[21/9] rounded-xl overflow-hidden glow-shadow">
+<img class="w-full h-full object-cover" data-alt="A high-end editorial fashion photography shot of a serene model with elegant makeup, surrounded by artistic smears of creamy pink and rose-colored lipstick swatches. The lighting is ethereal and soft, creating a glowing bloom effect across the scene. The background is a minimalist ivory, maintaining a sophisticated and modern beauty brand aesthetic with a palette of soft pinks and pristine whites." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFeEdeviEnn5WkmIFY3uo9dVGTmyEC-uPSaq3IiwnQxv5jA_YL1yx0YoCqRzYbsgjCWglTiU42H6xh19AoZW2dMXXCKjrf70R3HVqJQ21lidfqkPa3l0cxXiFmpGmqtdtmXMCxDaVSGqpaje_T4TWQJUtMkU5tEiyeKX_g8CPucX893z1xitk5TXpKlN60AI8-Xq5jSF_f5cLY7QwmwfYf8bYfXicoZVZ2eW1vfcnuPwgBU9jgtwV3L4Vz-H-sR5ypmvesj8l0wKYg">
+<div class="absolute inset-0 bg-gradient-to-r from-surface/40 to-transparent flex flex-col justify-center px-12">
+<div class="glass-panel p-10 rounded-xl max-w-lg border border-white/20">
+<span class="font-label-caps text-label-caps text-primary mb-4 block">New Lipstick Collection Campaign</span>
+<h1 class="font-headline-xl text-headline-xl text-primary mb-6 leading-tight">The Art of <br>Ephemeral Bloom</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mb-8 max-w-sm">Experience the fusion of high-end textures and cutting-edge AR technology. Rediscover elegance in every shade.</p>
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-label-caps text-label-caps hover:scale-105 transition-transform duration-300 flex items-center gap-2">
+                            Explore Collection <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Try in AR CTA (Pinned/Floating Interaction) -->
+<section class="flex justify-center mb-stack-lg reveal active">
+<div class="bg-secondary-container border border-white/40 px-12 py-8 rounded-full flex items-center gap-stack-lg glow-shadow">
+<div class="flex flex-col">
+<span class="font-headline-lg text-primary text-[24px]">See it on yourself instantly</span>
+<p class="text-on-secondary-container font-body-sm">No wait, no mess. Just your camera and our shades.</p>
+</div>
+<button class="bg-white text-primary border border-primary/20 px-10 py-4 rounded-full font-label-caps text-label-caps hover:bg-primary hover:text-white transition-all duration-500 shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined" data-weight="fill">view_in_ar</span>
+                    Try Collection in AR
+                </button>
+</div>
+</section>
+<!-- Limited Time Discount Section -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-lg">
+<!-- Promotional Card 1 -->
+<div class="glass-panel p-12 rounded-xl border border-primary-container/30 flex flex-col justify-between glow-shadow reveal active">
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="bg-primary text-on-primary text-[10px] px-2 py-1 rounded font-bold uppercase tracking-widest">Limited Time</span>
+<span class="text-primary font-label-caps text-label-caps">Student Exclusive</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-4">Exclusive University Offer</h2>
+<div class="text-[64px] font-headline-xl text-primary leading-none mb-6">20% OFF</div>
+<p class="font-body-md text-on-surface-variant max-w-md">Our gift to the future creators. Use your university credentials to unlock 20% off the entire Core Collection.</p>
+</div>
+<div class="mt-12">
+<div class="flex mb-6 gap-stack-md" id="countdown">
+<div class="flex flex-col items-center">
+<div class="rounded-xl bg-white border border-primary-container flex items-center justify-center font-headline-lg text-primary w-24 h-24 text-[48px]" id="days">02</div>
+<span class="font-label-caps mt-2 text-label-caps">DAYS</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="rounded-xl bg-white border border-primary-container flex items-center justify-center font-headline-lg text-primary w-24 h-24 text-[48px]" id="hours">04</div>
+<span class="font-label-caps mt-2 text-label-caps">HOURS</span>
+</div>
+<div class="flex flex-col items-center">
+<div class="rounded-xl bg-white border border-primary-container flex items-center justify-center font-headline-lg text-primary w-24 h-24 text-[48px]" id="mins">23</div>
+<span class="font-label-caps mt-2 text-label-caps">MINS</span>
+</div>
+</div>
+<button class="w-full border border-secondary text-secondary py-4 rounded-full font-label-caps text-label-caps hover:bg-secondary hover:text-white transition-all duration-300">Verify &amp; Redeem</button>
+</div>
+</div>
+<!-- Swatches Bento Section -->
+<div class="grid grid-cols-2 grid-rows-2 gap-4 reveal active" style="transition-delay: 200ms;">
+<div class="rounded-xl overflow-hidden bg-surface-container shadow-sm">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" data-alt="A macro close-up of a luxurious lipstick bullet in a soft dusty rose shade, showing incredible detail of the texture and gold-embossed brand logo. The lighting is delicate and side-lit to emphasize the creamy finish. The overall aesthetic is ethereal and minimalist, fitting the Ephemeral Bloom theme." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCF7omuf92C_cXS0qaw2jSwtcv_ZA2BKMU2oVEVITfCrLRB7g6yp9PBC3utSIaH1CbRk2J29Gzmzn3lV2NUh-sg_GGAIKP6DmYg_Bxgv59Owr5PUq9LUejLgQCWDe4I7Fil6FBrQSTPFReOHsAOaiRo-H95I0n0GPfN1u7PTXrc5LhCLrSRw9AgN6N2qyApXHuxS-7BIZMT3WNKGzhjzb5EMQO0dLTpT-cFoWws6ziumdiL8LdnVe-9WixHnK2S917xZtTQCEE-lwKU">
+</div>
+<div class="rounded-xl overflow-hidden bg-primary-container shadow-sm">
+<img class="w-full h-full object-cover hover:scale-110 transition-transform duration-700" data-alt="Creative arrangement of three different shades of lipstick tubes standing elegantly on a reflective semi-translucent surface. The background is a soft gradient of lavender and blush pink. The image captures a clean, premium boutique feel with subtle glassmorphism effects and airy lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAfVtzEqABZvFD0wNzjjjv2RUEylMV7nREgfw8RAXNPq01hPbp_AQ9-30W9VbzflgHbWTyQeERaLv1p2utbevNh1qMT-p4959EndI7bNSMioQr0pn2tlGtVeAOUlHngR3WXl_1NR-ZkpYIApiGrLQWbk5XEFjhcOnEUCtFOjcwiy3t0HAYj1OpuF3mOdCQNmC7r4QkGuYI5YJJWtExVhjmzKEPYdOHK3l67kKO10IL06f8o5RguCNwCHtjg_fOomyy3Uz57TFAPoMxq">
+</div>
+<div class="col-span-2 rounded-xl overflow-hidden bg-secondary-container shadow-sm">
+<img class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" data-alt="Horizontal artistic shot of multi-colored lipstick smears across a white canvas, featuring shades from deep burgundy to soft petal pink. The smears are textured and glossy, reflecting soft studio lights. The composition is clean and modern, highlighting the vibrant pigment and high-end aesthetic of the beauty collection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB311eAK7R7NC_r-Gi2-Aps7BviMEM1Y2Ck4iW6PlWWzFLmOblBoGYwS4pTAzD_XER2iNXCCxy-H2s7an6xFvc8PmOKAHDZ4JNRgkN7wJCD0fhDoHoAHzgB4LbnDRwPksYUrOKgCL9Sc8su8CFmpNw9MoHsqukiSeJH9Mn4GiolxVCNujvgeMdrZnNkjkuIgu8jF2kPxcYoRw6GScwgow9z75GyotRqjF5fyw264Y6IHjPG5_-Bj_hxhT1ewCse50rv5RSKk8rM76pJ">
+</div>
+</div>
+</div>
+</section>
+<!-- Featured Campaign Video Section -->
+<section class="px-margin-desktop py-stack-lg max-w-container-max mx-auto reveal active">
+<div class="mb-stack-md text-center">
+<span class="font-label-caps text-label-caps text-secondary">Cinema Experience</span>
+<h2 class="font-headline-lg text-headline-lg text-primary">Behind The Bloom: Campaign Film</h2>
+</div>
+<div class="relative w-full aspect-video rounded-xl overflow-hidden group cursor-pointer glow-shadow">
+<img class="w-full h-full object-cover" data-alt="A wide cinematic still from a high-end beauty campaign video, showing a model gracefully moving through a mist-filled minimalist studio. Soft pink silk fabric floats in the background. The aesthetic is dreamy and ethereal, emphasizing the brand's sophisticated identity. Soft lighting and high-key tones dominate the frame." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAMm1jVEeEtnMnB84TAKtCpazWJhcxrQFFkuaYka0ONkojw5RrtyiJbKjLqejUj63OmBCCF2ZCz0uhYbCoSUcH95af86dJ4gWV7jPJ-Vg4xzzkQquR5nOwBGBmyHw2gYBlv2AQWj2-VbZeg3axjgz4IAfy45kRKIYBPRKrF4hIFWA8zGu8nwoNarQ8sJv-OGDZAkfPZ8AJDlCw_SMI0QXZ--ZxxrBpAX1Fw50j9Cbm_Y-8SQ6uF-90z5CDpNlYOT0k2V8xIYtSsFFjj">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-500 flex items-center justify-center">
+<div class="w-24 h-24 rounded-full glass-panel border border-white/50 flex items-center justify-center text-primary transform group-hover:scale-110 transition-transform duration-500">
+<span class="material-symbols-outlined text-[48px]" style="font-variation-settings: &quot;FILL&quot; 1;">play_arrow</span>
+</div>
+</div>
+<div class="absolute bottom-8 left-8 right-8 flex justify-between items-end">
+<p class="font-body-md text-white/90 drop-shadow-md">Directed by Lucian Bloom <br><span class="text-body-sm opacity-70">Paris, 2024</span></p>
+<div class="flex gap-2">
+<div class="w-2 h-2 rounded-full bg-white"></div>
+<div class="w-2 h-2 rounded-full bg-white/40"></div>
+<div class="w-2 h-2 rounded-full bg-white/40"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface dark:bg-surface-dim w-full py-stack-lg mt-stack-lg">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop max-w-container-max mx-auto gap-stack-md">
+<div class="font-label-caps text-label-caps text-primary">GasdiskueLips</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant dark:text-on-secondary-fixed-variant">
+                © 2024 GasdiskueLips University Project. All rights reserved.
+            </div>
+<div class="flex gap-stack-md font-body-sm text-body-sm">
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-200 opacity-80 hover:opacity-100" href="#">Privacy Policy</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-200 opacity-80 hover:opacity-100" href="#">Terms of Use</a>
+<a class="text-on-surface-variant hover:text-primary transition-opacity duration-200 opacity-80 hover:opacity-100" href="#">University Link</a>
+</div>
+</div>
+</footer>
+<script>
+        // Reveal on scroll logic
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Countdown Timer Logic
+        function updateTimer() {
+            const now = new Date();
+            // Static mock logic for demo
+            let h = 23 - now.getHours();
+            let m = 59 - now.getMinutes();
+            
+            document.getElementById('hours').textContent = h.toString().padStart(2, '0');
+            document.getElementById('mins').textContent = m.toString().padStart(2, '0');
+        }
+        setInterval(updateTimer, 1000);
+        updateTimer();
+
+        // Parallax effect for hero
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('section img');
+            if(heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
+        });
+    </script>
+
+
+</body></html>
