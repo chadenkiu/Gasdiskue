@@ -453,6 +453,21 @@
       let rafId = 0
       let lastVideoTime = -1
 
+      let faceDetected = false
+      // Audio files
+const cherryAudio = new Audio("assets/audio/cherry-red.mp3")
+const nudeAudio = new Audio("assets/audio/nude-beige.mp3")
+const roseAudio = new Audio("assets/audio/rose-pink.mp3")
+
+function stopAllAudio() {
+  cherryAudio.pause()
+  nudeAudio.pause()
+  roseAudio.pause()
+
+  cherryAudio.currentTime = 0
+  nudeAudio.currentTime = 0
+  roseAudio.currentTime = 0
+}
       // --- Elements ---
       const video = document.getElementById("video")
       const canvas = document.getElementById("canvas")
@@ -492,8 +507,28 @@
               <span class="shade-desc">${shade.description}</span>
             </span>`
           btn.addEventListener("click", () => {
+
             selectedShade = shade
             renderShades()
+
+            if (!faceDetected) {
+               alert("Please show your face to use the virtual try-on.")
+              return
+            }
+
+            stopAllAudio()
+
+            if (shade.id === "cherry-red") {
+              cherryAudio.play()
+            }
+
+            if (shade.id === "nude-beige") {
+              nudeAudio.play()
+            }
+
+            if (shade.id === "rose-pink") {
+              roseAudio.play()
+            }
           })
           shadeList.appendChild(btn)
         })
@@ -538,6 +573,8 @@
         }
 
         if (results?.faceLandmarks?.length) {
+          faceDetected = true
+
           hint.hidden = true
           const lm = results.faceLandmarks[0]
           const [r, g, b] = selectedShade.rgb
@@ -559,8 +596,9 @@
 
           ctx.restore()
         } else if (results) {
-          hint.hidden = false
-        }
+            faceDetected = false
+            hint.hidden = false
+          }
 
         ctx.restore()
         rafId = requestAnimationFrame(renderLoop)
