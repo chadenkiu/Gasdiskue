@@ -276,6 +276,23 @@
 </div>
 </footer>
 <script>
+        // Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuIcon = mobileMenuBtn.querySelector('.material-symbols-outlined');
+
+mobileMenuBtn.addEventListener('click', () => {
+    // Toggle the menu visibility
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+    
+    // Switch the icon between 'menu' and 'close'
+    if (mobileMenu.classList.contains('hidden')) {
+        menuIcon.textContent = 'menu';
+    } else {
+        menuIcon.textContent = 'close';
+    }
+});
         // Micro-interactions for smooth scrolling or hover effects can be added here
         document.addEventListener('scroll', () => {
             const nav = document.querySelector('nav');
