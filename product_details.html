@@ -122,10 +122,11 @@
 <div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
 <div class="font-headline-lg text-headline-lg text-primary dark:text-primary-fixed-dim tracking-tight">GasdiskueLips</div>
 <nav class="hidden md:flex gap-8 items-center">
-<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="#">Home</a>
-<a class="font-body-md text-body-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="#">Products</a>
-<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="#">About Us</a>
-<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="#">Contact</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="index.html">Home</a>
+<a class="font-body-md text-body-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="products.html">Products</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="promotions.html">Promotions</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="about.html">About Us</a>
+<a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="contact.html">Contact</a>
 </nav>
 <button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps text-label-caps hover:opacity-90 transition-opacity">
                 Try AR
@@ -139,7 +140,12 @@
 <!-- Image Side -->
 <div class="relative group">
 <div class="aspect-[4/5] rounded-xl overflow-hidden glass-card soft-glow p-8 flex items-center justify-center">
-<img alt="Premium Lipstick" class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105" data-alt="A luxurious, close-up studio shot of a high-end GasdiskueLips lipstick in an elegant gold and rose quartz casing. The product is set against a soft, ethereal background with warm, diffused lighting and subtle shadows. The overall aesthetic is minimalist and sophisticated, reflecting a premium beauty brand's visual identity with soft pink and cream tones." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC-2oZ9pEIymNR8vD2DPaD4ySKaplJn_awmksA85i1CgGTBb1A03gKqk9MCC0SwZQZVkpdzD0UNR1MjcbzqoQwTmy0wftZXIeJK0_Pbje9MZDaSYnQ8aXi3ngaMDqze5q0maSpWi-zcasoRKcIKx8y54zFUtFf3cjebGWK7jQyiILfTMoAcjfGWZhELbDEBRdGpX6hcuyssyidbsj9tgL7qOtNDAlL08zi2OyQpLhbvR158Mg5keY4FCopsKNRVd1E1_szPDJf9zj_n"/>
+<img
+  id="lipstickImage"
+  alt="Premium Lipstick"
+  class="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+  src="images/rose-pink.png"
+/>
 </div>
 <div class="absolute -bottom-4 -right-4 bg-white/40 backdrop-blur-md p-4 rounded-lg shadow-sm border border-white/50">
 <span class="font-label-caps text-label-caps text-primary uppercase">Limited Edition</span>
@@ -154,8 +160,8 @@
 </nav>
 <h1 class="font-headline-xl text-headline-xl text-primary">Velvet Ethera</h1>
 <div class="flex items-baseline gap-4">
-<span class="font-headline-lg text-headline-lg text-on-surface">$42.00</span>
-<span class="font-body-sm text-body-sm text-on-surface-variant line-through">$58.00</span>
+<span class="font-headline-lg text-headline-lg text-on-surface">RM 34.00</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant line-through">RM58.00</span>
 </div>
 <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed max-w-md">
                         A weightless, matte-finish lipstick that feels like air. Formulated with rare botanical extracts for 12-hour hydration and a soft-focus blurring effect that enhances your natural beauty.
@@ -164,10 +170,10 @@
 <div class="mt-4">
 <span class="font-label-caps text-label-caps block mb-3">SELECT SHADE: ROSE DUST</span>
 <div class="flex gap-3">
-<button class="w-8 h-8 rounded-full bg-[#E8A2A2] ring-2 ring-primary ring-offset-2 border-2 border-white shadow-sm"></button>
-<button class="w-8 h-8 rounded-full bg-[#C15E5E] border-2 border-white shadow-sm hover:scale-110 transition-transform"></button>
-<button class="w-8 h-8 rounded-full bg-[#8E3B3B] border-2 border-white shadow-sm hover:scale-110 transition-transform"></button>
-<button class="w-8 h-8 rounded-full bg-[#D4829E] border-2 border-white shadow-sm hover:scale-110 transition-transform"></button>
+<button id="rosePink" class="w-8 h-8 rounded-full bg-pink-300"></button>
+<button id="cherryRed" class="w-8 h-8 rounded-full bg-red-500"></button>
+<button id="nudeBeige" class="w-8 h-8 rounded-full bg-[#C8A27A]"></button>
+
 </div>
 </div>
 <!-- Actions -->
@@ -298,4 +304,29 @@
             }
         });
     </script>
+
+    <script>
+const lipstickImage = document.getElementById("lipstickImage");
+
+document.getElementById("rosePink").onclick = function () {
+    lipstickImage.src = "images/rose-pink.png";
+};
+
+document.getElementById("cherryRed").onclick = function () {
+    lipstickImage.src = "images/cherry-red.png";
+};
+
+document.getElementById("nudeBeige").onclick = function () {
+    lipstickImage.src = "images/nude-beige.png";
+};
+
+document.getElementById("berryPurple").onclick = function () {
+    lipstickImage.src = "images/berry-purple.png";
+};
+
+document.getElementById("coralOrange").onclick = function () {
+    lipstickImage.src = "images/coral-orange.png";
+};
+</script>
+
 </body></html>
