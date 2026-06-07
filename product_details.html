@@ -158,7 +158,9 @@
 <span class="material-symbols-outlined text-[12px]">chevron_right</span>
 <span class="text-primary">VELVET ETHERA</span>
 </nav>
-<h1 class="font-headline-xl text-headline-xl text-primary">Velvet Ethera</h1>
+<h1 id="productTitle" class="font-headline-xl text-headline-xl text-primary">
+    Rose Pink
+</h1>
 <div class="flex items-baseline gap-4">
 <span class="font-headline-lg text-headline-lg text-on-surface">RM 34.00</span>
 <span class="font-body-sm text-body-sm text-on-surface-variant line-through">RM58.00</span>
@@ -168,7 +170,9 @@
                     </p>
 <!-- Shade Selection -->
 <div class="mt-4">
-<span class="font-label-caps text-label-caps block mb-3">SELECT SHADE: ROSE DUST</span>
+<span id="shadeName" class="font-label-caps text-label-caps block mb-3">
+    SELECT SHADE: ROSE PINK
+</span>
 <div class="flex gap-3">
 <button id="rosePink" class="w-8 h-8 rounded-full bg-pink-300"></button>
 <button id="cherryRed" class="w-8 h-8 rounded-full bg-red-500"></button>
@@ -307,26 +311,27 @@
 
     <script>
 const lipstickImage = document.getElementById("lipstickImage");
+const shadeName = document.getElementById("shadeName");
+const productTitle = document.getElementById("productTitle");
 
 document.getElementById("rosePink").onclick = function () {
     lipstickImage.src = "images/rose-pink.png";
+    shadeName.innerHTML = "SELECT SHADE: ROSE PINK";
+    productTitle.innerHTML = "Rose Pink";
 };
 
 document.getElementById("cherryRed").onclick = function () {
     lipstickImage.src = "images/cherry-red.png";
+    shadeName.innerHTML = "SELECT SHADE: CHERRY RED";
+    productTitle.innerHTML = "Cherry Red";
 };
 
 document.getElementById("nudeBeige").onclick = function () {
     lipstickImage.src = "images/nude-beige.png";
+    shadeName.innerHTML = "SELECT SHADE: NUDE BEIGE";
+    productTitle.innerHTML = "Nude Beige";
 };
 
-document.getElementById("berryPurple").onclick = function () {
-    lipstickImage.src = "images/berry-purple.png";
-};
-
-document.getElementById("coralOrange").onclick = function () {
-    lipstickImage.src = "images/coral-orange.png";
-};
 </script>
 
 </body></html>
