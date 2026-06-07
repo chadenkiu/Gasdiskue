@@ -287,6 +287,23 @@
 </div>
 </footer>
 <script>
+      // Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuIcon = mobileMenuBtn.querySelector('.material-symbols-outlined');
+
+mobileMenuBtn.addEventListener('click', () => {
+    // Toggle the menu visibility
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+    
+    // Switch the icon between 'menu' and 'close'
+    if (mobileMenu.classList.contains('hidden')) {
+        menuIcon.textContent = 'menu';
+    } else {
+        menuIcon.textContent = 'close';
+    }
+});
         // Simple micro-interaction for shade selection
         const shadeButtons = document.querySelectorAll('.mt-4 .flex button');
         shadeButtons.forEach(btn => {
