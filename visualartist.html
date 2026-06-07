@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AR Lipstick Studio</title>
+    <style>
+      :root {
+        --background: oklch(0.99 0.005 20);
+        --foreground: oklch(0.22 0.02 20);
+        --card: oklch(1 0 0);
+        --primary: oklch(0.55 0.2 18);
+        --primary-foreground: oklch(0.99 0.005 20);
+        --secondary: oklch(0.95 0.02 20);
+        --muted: oklch(0.96 0.01 20);
+        --muted-foreground: oklch(0.5 0.03 20);
+        --accent: oklch(0.93 0.04 12);
+        --border: oklch(0.9 0.02 20);
+        --radius: 0.75rem;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        background-color: var(--background);
+        color: var(--foreground);
+        font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.5;
+      }
+
+      main {
+        margin: 0 auto;
+        min-height: 100vh;
+        max-width: 64rem;
+        padding: 2rem 1rem;
+      }
+      @media (min-width: 640px) {
+        main {
+          padding: 3rem 1.5rem;
+        }
+      }
+
+      header {
+        margin-bottom: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .eyebrow {
+        font-size: 0.75rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--primary);
+      }
+
+      h1 {
+        font-size: 1.875rem;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        text-wrap: balance;
+      }
+      @media (min-width: 640px) {
+        h1 {
+          font-size: 2.25rem;
+        }
+      }
+
+      .subtitle {
+        max-width: 60ch;
+        text-wrap: pretty;
+        line-height: 1.625;
+        color: var(--muted-foreground);
+      }
+
+      .layout {
+        display: grid;
+        gap: 1.5rem;
+      }
+      @media (min-width: 768px) {
+        .layout {
+          grid-template-columns: 1fr 320px;
+        }
+      }
+
+      /* Stage */
+      .stage {
+        position: relative;
+        aspect-ratio: 3 / 4;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 1.5rem;
+        border: 1px solid var(--border);
+        background-color: var(--muted);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+      }
+      @media (min-width: 640px) {
+        .stage {
+          aspect-ratio: 16 / 9;
+        }
+      }
+
+      video {
+        display: none;
+      }
+
+      canvas {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .hint {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 1rem;
+        display: flex;
+        justify-content: center;
+      }
+      .hint span {
+        border-radius: 9999px;
+        background-color: color-mix(in oklch, var(--foreground) 80%, transparent);
+        padding: 0.5rem 1rem;
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: var(--background);
+      }
+
+      .overlay {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        background-color: var(--muted);
+        padding: 1.5rem;
+        text-align: center;
+      }
+      .overlay[hidden] {
+        display: none;
+      }
+
+      .icon-circle {
+        display: flex;
+        width: 4rem;
+        height: 4rem;
+        align-items: center;
+        justify-content: center;
+        border-radius: 9999px;
+        background-color: color-mix(in oklch, var(--primary) 10%, transparent);
+        color: var(--primary);
+      }
+
+      .overlay strong {
+        display: block;
+        font-weight: 500;
+        text-wrap: balance;
+      }
+      .overlay p {
+        font-size: 0.875rem;
+        color: var(--muted-foreground);
+        text-wrap: pretty;
+      }
+      .overlay .stack {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+
+      .btn {
+        border: none;
+        cursor: pointer;
+        border-radius: 9999px;
+        background-color: var(--primary);
+        padding: 0.625rem 1.5rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--primary-foreground);
+        transition: opacity 0.15s ease;
+      }
+      .btn:hover {
+        opacity: 0.9;
+      }
+
+      .spinner {
+        width: 2rem;
+        height: 2rem;
+        border-radius: 9999px;
+        border: 2px solid var(--primary);
+        border-top-color: transparent;
+        animation: spin 0.8s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Controls */
+      .controls {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      @media (min-width: 768px) {
+        .controls {
+          padding-top: 0.5rem;
+        }
+      }
+
+      .section-label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--muted-foreground);
+        margin-bottom: 0.75rem;
+      }
+
+      .shade-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .shade {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        border-radius: 1rem;
+        border: 1px solid var(--border);
+        background-color: var(--card);
+        padding: 0.75rem;
+        text-align: left;
+        cursor: pointer;
+        transition: background-color 0.15s ease, border-color 0.15s ease;
+      }
+      .shade:hover {
+        background-color: var(--secondary);
+      }
+      .shade[aria-pressed="true"] {
+        border-color: var(--primary);
+        background-color: var(--accent);
+      }
+
+      .swatch {
+        width: 2.5rem;
+        height: 2.5rem;
+        flex-shrink: 0;
+        border-radius: 9999px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.15);
+      }
+
+      .shade-text {
+        display: flex;
+        flex-direction: column;
+      }
+      .shade-name {
+        font-weight: 500;
+      }
+      .shade-desc {
+        font-size: 0.875rem;
+        color: var(--muted-foreground);
+      }
+
+      .intensity-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 0.75rem;
+      }
+      .intensity-head label {
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: var(--muted-foreground);
+      }
+      .intensity-value {
+        font-size: 0.875rem;
+        font-variant-numeric: tabular-nums;
+      }
+
+      input[type="range"] {
+        height: 0.5rem;
+        width: 100%;
+        cursor: pointer;
+        appearance: none;
+        border-radius: 9999px;
+        background-color: var(--secondary);
+        accent-color: var(--primary);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <span class="eyebrow">Virtual Try-On</span>
+        <h1>AR Lipstick Studio</h1>
+        <p class="subtitle">
+          See how each shade looks on you in real time. Pick a color, adjust the
+          intensity, and the lipstick follows your lips as you move.
+        </p>
+      </header>
+
+      <div class="layout">
+        <!-- Stage -->
+        <div class="stage">
+          <video id="video" playsinline muted></video>
+          <canvas
+            id="canvas"
+            aria-label="Live camera preview with virtual lipstick applied"
+          ></canvas>
+
+          <div class="hint" id="hint" hidden>
+            <span>Center your face in the frame</span>
+          </div>
+
+          <!-- Idle -->
+          <div class="overlay" id="overlay-idle">
+            <div class="icon-circle">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <path
+                  d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3Z"
+                />
+                <circle cx="12" cy="13" r="3" />
+              </svg>
+            </div>
+            <div class="stack">
+              <strong>Try lipstick on in real time</strong>
+              <p>
+                We&apos;ll use your camera to apply shades to your lips. Video
+                never leaves your device.
+              </p>
+            </div>
+            <button class="btn" id="start-btn">Start camera</button>
+          </div>
+
+          <!-- Loading -->
+          <div class="overlay" id="overlay-loading" hidden>
+            <div class="spinner"></div>
+            <p>Loading face tracking…</p>
+          </div>
+
+          <!-- Denied -->
+          <div class="overlay" id="overlay-denied" hidden>
+            <div class="stack">
+              <strong>Camera blocked</strong>
+              <p>
+                Allow camera access in your browser settings, then try again.
+              </p>
+            </div>
+            <button class="btn" data-retry>Retry</button>
+          </div>
+
+          <!-- Error -->
+          <div class="overlay" id="overlay-error" hidden>
+            <div class="stack">
+              <strong>Something went wrong</strong>
+              <p>We couldn&apos;t start the camera. Please try again.</p>
+            </div>
+            <button class="btn" data-retry>Retry</button>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <aside class="controls">
+          <div>
+            <h2 class="section-label">Choose a shade</h2>
+            <div class="shade-list" id="shade-list"></div>
+          </div>
+
+          <div>
+            <div class="intensity-head">
+              <label for="intensity">Intensity</label>
+              <span class="intensity-value" id="intensity-value">70%</span>
+            </div>
+            <input
+              id="intensity"
+              type="range"
+              min="0.2"
+              max="1"
+              step="0.05"
+              value="0.7"
+            />
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <script type="module">
+      import {
+        FaceLandmarker,
+        FilesetResolver,
+      } from "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/vision_bundle.mjs"
+
+      // --- Shade data ---
+      const SHADES = [
+        {
+          id: "cherry-red",
+          name: "Cherry Red",
+          description: "Bold, glossy crimson",
+          rgb: [196, 30, 45],
+          css: "rgb(196, 30, 45)",
+        },
+        {
+          id: "nude-beige",
+          name: "Nude Beige",
+          description: "Soft look but better",
+          rgb: [183, 110, 92],
+          css: "rgb(183, 110, 92)",
+        },
+        {
+          id: "rose-pink",
+          name: "Rose Pink",
+          description: "Romantic muted rose",
+          rgb: [202, 88, 116],
+          css: "rgb(202, 88, 116)",
+        },
+      ]
+
+      // MediaPipe FaceMesh lip contour landmark indices.
+      const OUTER_LIP = [
+        61, 146, 91, 181, 84, 17, 314, 405, 321, 375, 291, 409, 270, 269, 267,
+        0, 37, 39, 40, 185,
+      ]
+      const INNER_LIP = [
+        78, 95, 88, 178, 87, 14, 317, 402, 318, 324, 308, 415, 310, 311, 312,
+        13, 82, 81, 80, 191,
+      ]
+
+      // --- State ---
+      let selectedShade = SHADES[0]
+      let intensity = 0.7
+      let landmarker = null
+      let rafId = 0
+      let lastVideoTime = -1
+
+      // --- Elements ---
+      const video = document.getElementById("video")
+      const canvas = document.getElementById("canvas")
+      const ctx = canvas.getContext("2d")
+      const hint = document.getElementById("hint")
+      const shadeList = document.getElementById("shade-list")
+      const intensityInput = document.getElementById("intensity")
+      const intensityValue = document.getElementById("intensity-value")
+      const overlays = {
+        idle: document.getElementById("overlay-idle"),
+        loading: document.getElementById("overlay-loading"),
+        denied: document.getElementById("overlay-denied"),
+        error: document.getElementById("overlay-error"),
+      }
+
+      function setStatus(status) {
+        Object.entries(overlays).forEach(([key, el]) => {
+          el.hidden = key !== status
+        })
+        // "ready" hides all overlays.
+        if (status === "ready") {
+          Object.values(overlays).forEach((el) => (el.hidden = true))
+        }
+      }
+
+      // --- Build shade picker ---
+      function renderShades() {
+        shadeList.innerHTML = ""
+        SHADES.forEach((shade) => {
+          const btn = document.createElement("button")
+          btn.className = "shade"
+          btn.setAttribute("aria-pressed", String(shade.id === selectedShade.id))
+          btn.innerHTML = `
+            <span class="swatch" style="background-color:${shade.css}" aria-hidden="true"></span>
+            <span class="shade-text">
+              <span class="shade-name">${shade.name}</span>
+              <span class="shade-desc">${shade.description}</span>
+            </span>`
+          btn.addEventListener("click", () => {
+            selectedShade = shade
+            renderShades()
+          })
+          shadeList.appendChild(btn)
+        })
+      }
+      renderShades()
+
+      intensityInput.addEventListener("input", (e) => {
+        intensity = Number(e.target.value)
+        intensityValue.textContent = `${Math.round(intensity * 100)}%`
+      })
+
+      // --- Drawing ---
+      function drawContour(landmarks, indices, w, h) {
+        ctx.moveTo(landmarks[indices[0]].x * w, landmarks[indices[0]].y * h)
+        for (let i = 1; i < indices.length; i++) {
+          ctx.lineTo(landmarks[indices[i]].x * w, landmarks[indices[i]].y * h)
+        }
+        ctx.closePath()
+      }
+
+      function renderLoop() {
+        if (!video || video.readyState < 2 || !landmarker) {
+          rafId = requestAnimationFrame(renderLoop)
+          return
+        }
+
+        const w = video.videoWidth
+        const h = video.videoHeight
+        if (canvas.width !== w) canvas.width = w
+        if (canvas.height !== h) canvas.height = h
+
+        // Mirror like a real mirror.
+        ctx.save()
+        ctx.scale(-1, 1)
+        ctx.translate(-w, 0)
+        ctx.drawImage(video, 0, 0, w, h)
+
+        let results
+        if (video.currentTime !== lastVideoTime) {
+          lastVideoTime = video.currentTime
+          results = landmarker.detectForVideo(video, performance.now())
+        }
+
+        if (results?.faceLandmarks?.length) {
+          hint.hidden = true
+          const lm = results.faceLandmarks[0]
+          const [r, g, b] = selectedShade.rgb
+
+          ctx.save()
+          ctx.beginPath()
+          drawContour(lm, OUTER_LIP, w, h)
+          drawContour(lm, INNER_LIP, w, h)
+          ctx.clip("evenodd")
+
+          ctx.globalCompositeOperation = "multiply"
+          ctx.globalAlpha = intensity
+          ctx.fillStyle = `rgb(${r}, ${g}, ${b})`
+          ctx.fillRect(0, 0, w, h)
+
+          ctx.globalCompositeOperation = "soft-light"
+          ctx.globalAlpha = intensity * 0.5
+          ctx.fillRect(0, 0, w, h)
+
+          ctx.restore()
+        } else if (results) {
+          hint.hidden = false
+        }
+
+        ctx.restore()
+        rafId = requestAnimationFrame(renderLoop)
+      }
+
+      // --- Start ---
+      async function start() {
+        setStatus("loading")
+        try {
+          const fileset = await FilesetResolver.forVisionTasks(
+            "https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@0.10.35/wasm"
+          )
+          landmarker = await FaceLandmarker.createFromOptions(fileset, {
+            baseOptions: {
+              modelAssetPath:
+                "https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task",
+              delegate: "GPU",
+            },
+            runningMode: "VIDEO",
+            numFaces: 1,
+          })
+
+          const stream = await navigator.mediaDevices.getUserMedia({
+            video: { facingMode: "user", width: 1280, height: 720 },
+            audio: false,
+          })
+          video.srcObject = stream
+          await video.play()
+
+          setStatus("ready")
+          rafId = requestAnimationFrame(renderLoop)
+        } catch (err) {
+          console.log("[v0] AR start error:", err?.message)
+          setStatus(err?.name === "NotAllowedError" ? "denied" : "error")
+        }
+      }
+
+      document.getElementById("start-btn").addEventListener("click", start)
+      document
+        .querySelectorAll("[data-retry]")
+        .forEach((btn) => btn.addEventListener("click", start))
+
+      window.addEventListener("beforeunload", () => {
+        cancelAnimationFrame(rafId)
+        const stream = video.srcObject
+        stream?.getTracks().forEach((t) => t.stop())
+        landmarker?.close()
+      })
+    </script>
+  </body>
+</html>
