@@ -272,21 +272,22 @@
 </div>
 </footer>
 <script>
-      let currentPath = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
+let currentPath = window.location.pathname.split('/').pop().replace('.html', '') || 'index';
 
 const desktopNavLinks = document.querySelectorAll('.hidden.lg\\:flex a');
 desktopNavLinks.forEach(link => {
     const linkHref = link.getAttribute('href').replace('.html', '');
     
     if (linkHref === currentPath) {
-        // Apply Active Classes (Bold + Underline)
+
         link.className = "font-body-md text-body-md text-primary dark:text-primary-fixed-dim font-bold border-b-2 border-primary dark:border-primary-fixed-dim pb-1 transition-colors duration-300";
     } else {
-        // Apply Inactive Classes (No underline)
+
         link.className = "font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300";
     }
 });
 
+// 3. Target the Mobile Dropdown Links
 const mobileNavLinks = document.querySelectorAll('#mobile-menu a');
 mobileNavLinks.forEach(link => {
     const linkHref = link.getAttribute('href').replace('.html', '');
