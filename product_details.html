@@ -263,8 +263,12 @@
 </div>
 <h3 class="font-body-md font-bold text-on-surface">Experience the beauty of flawless colour</h3>
 <p class="font-body-sm text-on-surface-variant">Watch how our signature lipstick transforms every moment into a statement of beauty.</p>
-<button class="text-primary font-label-caps text-[10px] mt-auto flex items-center gap-1 hover:underline">
-                            WATCH NOW <span class="material-symbols-outlined text-sm">arrow_forward</span>
+<button id="openVideoBtn"
+        class="text-primary font-label-caps text-[10px] mt-auto flex items-center gap-1 hover:underline">
+
+    WATCH NOW
+    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+
 </button>
 </div>
 </div>
@@ -420,6 +424,44 @@ document.getElementById("playStoryBtn").addEventListener("click", () => {
     audio.addEventListener("ended", () => {
         audioStoryCard.classList.remove("audio-playing");
     });
+});
+
+</script>
+<!-- Tutorial Video Modal -->
+<div id="videoModal"
+     class="fixed inset-0 bg-black/80 hidden items-center justify-center z-50">
+
+    <div class="bg-white rounded-xl p-4 max-w-4xl w-full mx-4 relative">
+
+        <button id="closeVideoBtn"
+                class="absolute top-2 right-4 text-2xl">
+            ×
+        </button>
+
+        <video controls class="w-full rounded-lg">
+
+            <source src="videos/product.mp4" type="video/mp4">
+
+        </video>
+
+    </div>
+
+</div>
+
+<script>
+
+const openVideoBtn = document.getElementById("openVideoBtn");
+const closeVideoBtn = document.getElementById("closeVideoBtn");
+const videoModal = document.getElementById("videoModal");
+
+openVideoBtn.addEventListener("click", () => {
+    videoModal.classList.remove("hidden");
+    videoModal.classList.add("flex");
+});
+
+closeVideoBtn.addEventListener("click", () => {
+    videoModal.classList.add("hidden");
+    videoModal.classList.remove("flex");
 });
 
 </script>
