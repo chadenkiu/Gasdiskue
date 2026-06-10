@@ -114,6 +114,28 @@
         body {
             scroll-behavior: smooth;
         }
+
+        .audio-playing {
+    animation: floatCard 2.5s ease-in-out infinite;
+    box-shadow:
+        0 0 20px rgba(255, 182, 193, 0.4),
+        0 0 40px rgba(255, 182, 193, 0.25),
+        0 0 60px rgba(255, 182, 193, 0.15);
+}
+
+        @keyframes floatCard {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-6px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
     </style>
 </head>
 <body class="bg-background text-on-surface selection:bg-primary-container selection:text-primary">
@@ -128,9 +150,9 @@
 <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="about.html">About Us</a>
 <a class="font-body-md text-body-md text-on-surface-variant dark:text-on-secondary-fixed-variant hover:text-primary dark:hover:text-primary-fixed-dim transition-colors duration-300" href="contact.html">Contact</a>
 </nav>
-<button class="bg-primary text-on-primary px-6 py-2 rounded-full font-label-caps text-label-caps hover:opacity-90 transition-opacity">
-                Try AR
-            </button>
+<a href="visualartist.html" class="inline-block bg-primary text-on-primary px-8 py-2.5 rounded-full font-label-caps text-label-caps hover:bg-primary-container hover:text-on-primary-container transition-all duration-300 shadow-sm text-center">
+    Try AR
+</a>
 </div>
 </header>
 <main class="pt-32 pb-stack-lg">
@@ -182,10 +204,10 @@
 </div>
 <!-- Actions -->
 <div class="flex flex-col sm:flex-row gap-4 mt-8">
-<button class="flex-1 flex items-center justify-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-xl font-label-caps text-label-caps hover:opacity-90 transition-all shadow-lg shadow-primary/10">
-<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
-                            VIEW IN AR
-                        </button>
+<a href="visualartist.html" class="flex-1 flex items-center justify-center gap-2 bg-primary text-on-primary px-8 py-4 rounded-xl font-label-caps text-label-caps hover:opacity-90 transition-all shadow-lg shadow-primary/10">
+        <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">view_in_ar</span>
+        VIEW IN AR
+    </a>
 <button class="flex-1 flex items-center justify-center gap-2 border border-secondary text-secondary px-8 py-4 rounded-xl font-label-caps text-label-caps hover:bg-secondary/5 transition-all">
 <span class="material-symbols-outlined">play_circle</span>
                             WATCH TUTORIAL
@@ -234,13 +256,13 @@
 </button>
 </div>
 <!-- Card 3: Audio Narration -->
-<div class="glass-card p-6 rounded-xl soft-glow flex flex-col gap-4 border border-white hover:-translate-y-1 transition-transform">
-<div class="w-12 h-12 rounded-full bg-tertiary-container flex items-center justify-center text-tertiary">
+<div id="audioStoryCard" class="glass-card p-6 rounded-xl soft-glow flex flex-col gap-4 border border-white hover:-translate-y-1 transition-transform">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-primary">
 <span class="material-symbols-outlined">record_voice_over</span>
 </div>
 <h3 class="font-body-md font-bold text-on-surface">Audio Story</h3>
 <p class="font-body-sm text-on-surface-variant">Listen to our lead chemist explain the science behind the Velvet Ethera formula.</p>
-<button class="text-primary font-label-caps text-[10px] mt-auto flex items-center gap-1 hover:underline">
+<button id="playStoryBtn" class="text-primary font-label-caps text-[10px] mt-auto flex items-center gap-1 hover:underline">
                             PLAY AUDIO <span class="material-symbols-outlined text-sm">arrow_forward</span>
 </button>
 </div>
@@ -287,6 +309,23 @@
 </div>
 </footer>
 <script>
+      // Mobile Menu Toggle
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuIcon = mobileMenuBtn.querySelector('.material-symbols-outlined');
+
+mobileMenuBtn.addEventListener('click', () => {
+    // Toggle the menu visibility
+    mobileMenu.classList.toggle('hidden');
+    mobileMenu.classList.toggle('flex');
+    
+    // Switch the icon between 'menu' and 'close'
+    if (mobileMenu.classList.contains('hidden')) {
+        menuIcon.textContent = 'menu';
+    } else {
+        menuIcon.textContent = 'close';
+    }
+});
         // Simple micro-interaction for shade selection
         const shadeButtons = document.querySelectorAll('.mt-4 .flex button');
         shadeButtons.forEach(btn => {
@@ -314,23 +353,84 @@ const lipstickImage = document.getElementById("lipstickImage");
 const shadeName = document.getElementById("shadeName");
 const productTitle = document.getElementById("productTitle");
 
+let currentShade = "rose-pink";
+
+const roseStory = new Audio("assets/audio/Rose-pink-story.mp3");
+const cherryStory = new Audio("assets/audio/Cherry-red-story.mp3");
+const nudeStory = new Audio("assets/audio/Nude-beige-story.mp3");
+
+const audioStoryCard = document.getElementById("audioStoryCard");
+
+function stopStories() {
+
+    roseStory.pause();
+    cherryStory.pause();
+    nudeStory.pause();
+
+    roseStory.currentTime = 0;
+    cherryStory.currentTime = 0;
+    nudeStory.currentTime = 0;
+
+    audioStoryCard.classList.remove("audio-playing");
+}
+
 document.getElementById("rosePink").onclick = function () {
+
+    stopStories();
+
+    currentShade = "rose-pink";
+
     lipstickImage.src = "images/rose-pink.png";
     shadeName.innerHTML = "SELECT SHADE: ROSE PINK";
     productTitle.innerHTML = "Rose Pink";
 };
 
 document.getElementById("cherryRed").onclick = function () {
+
+    stopStories();
+
+    currentShade = "cherry-red";
+
     lipstickImage.src = "images/cherry-red.png";
     shadeName.innerHTML = "SELECT SHADE: CHERRY RED";
     productTitle.innerHTML = "Cherry Red";
 };
 
 document.getElementById("nudeBeige").onclick = function () {
+
+    stopStories();
+
+    currentShade = "nude-beige";
+
     lipstickImage.src = "images/nude-beige.png";
     shadeName.innerHTML = "SELECT SHADE: NUDE BEIGE";
     productTitle.innerHTML = "Nude Beige";
 };
+
+document.getElementById("playStoryBtn").addEventListener("click", () => {
+
+    stopStories();
+
+    audioStoryCard.classList.add("audio-playing");
+
+    if (currentShade === "rose-pink") {
+        roseStory.play();
+    }
+
+    if (currentShade === "cherry-red") {
+        cherryStory.play();
+    }
+
+    if (currentShade === "nude-beige") {
+        nudeStory.play();
+    }
+});
+
+[roseStory, cherryStory, nudeStory].forEach(audio => {
+    audio.addEventListener("ended", () => {
+        audioStoryCard.classList.remove("audio-playing");
+    });
+});
 
 </script>
 
