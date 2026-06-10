@@ -180,15 +180,16 @@
 <a href="visualartist.html" class="inline-block bg-primary text-on-primary px-10 py-4 rounded-full font-label-caps text-label-caps shadow-[0_20px_40px_-10px_rgba(107,90,95,0.3)] hover:-translate-y-1 transition-transform duration-300 text-center">
     Try AR Experience
 </a>
-<button class="border border-secondary text-secondary px-10 py-4 rounded-full font-label-caps text-label-caps hover:bg-secondary-container transition-colors duration-300">
-                            View Products
-                        </button>
+<a href="products.html"
+   class="inline-block border border-secondary text-secondary px-10 py-4 rounded-full font-label-caps text-label-caps hover:bg-secondary-container transition-colors duration-300">
+    View Products
+</a>
 </div>
 </div>
 <div class="relative group">
 <div class="absolute -inset-10 bg-primary-container/20 blur-3xl rounded-full group-hover:bg-primary-container/30 transition-all duration-700"></div>
 <model-viewer
-    src="models/lipstick.glb"
+    src="models/base_basic_pbr.glb"
     alt="3D Lipstick Model"
     auto-rotate
     camera-controls
@@ -230,10 +231,10 @@
       <h2 class="font-headline-lg text-headline-lg text-on-surface mt-stack-sm">The Essential Five</h2>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter h-auto md:h-[600px]">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter h-auto md:h-[500px]">
 
       <!-- Large Featured Item -->
-      <div class="md:col-span-7 relative group overflow-hidden rounded-xl glass-card border border-white/40 shadow-[0_8px_30px_rgb(107,90,95,0.05)] min-h-[400px]">
+<div class="md:col-span-7 relative group overflow-hidden rounded-xl glass-card border border-white/40 shadow-[0_8px_30px_rgb(107,90,95,0.05)] min-h-[100px]">
         <img
           alt="Rose Pink Shade"
           class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -247,49 +248,56 @@
       </div>
 
       <!-- Side Column -->
-      <div class="md:col-span-5 grid grid-rows-2 gap-gutter">
+<div class="md:col-span-5 flex flex-col gap-gutter h-full">
 
-        <!-- Top Two Cards -->
-        <div class="grid grid-cols-2 gap-gutter">
-          <!-- Nude Beige -->
-          <div class="relative group rounded-xl overflow-hidden glass-card border border-white/40 min-h-[220px]">
-            <img
-              alt="Nude Beige Shade"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              src="images/00.jpeg"
-            />
-            <div class="absolute inset-x-0 bottom-0 p-4 bg-surface/90 backdrop-blur-sm">
-              <p class="font-label-caps text-label-caps text-primary text-center">Nude Beige</p>
-            </div>
-          </div>
+    <!-- Top Two Cards -->
+    <div class="grid grid-cols-2 gap-gutter h-[220px]">
 
-          <!-- Cherry Red -->
-          <div class="relative group rounded-xl overflow-hidden glass-card border border-white/40 min-h-[220px]">
+        <!-- Nude Beige -->
+        <div class="relative group rounded-xl overflow-hidden glass-card border border-white/40">
             <img
-              alt="Cherry Red Shade"
-              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-              src="images/04.png"
+                src="images/00.jpeg"
+                alt="Nude Beige"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div class="absolute inset-x-0 bottom-0 p-4 bg-surface/90 backdrop-blur-sm">
-              <p class="font-label-caps text-label-caps text-primary text-center">Cherry Red</p>
+            <div class="absolute inset-x-0 bottom-0 p-3 bg-white/90 backdrop-blur-sm">
+                <p class="text-center text-primary font-semibold">Nude Beige</p>
             </div>
-          </div>
         </div>
 
-        <!-- Bottom Shop All Shades Card -->
-        <a href="products.html"
-           class="relative group rounded-xl overflow-hidden glass-card border border-white/40 block min-h-[280px]">
-          <img
+        <!-- Cherry Red -->
+        <div class="relative group rounded-xl overflow-hidden glass-card border border-white/40">
+            <img
+                src="images/04.png"
+                alt="Cherry Red"
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            />
+            <div class="absolute inset-x-0 bottom-0 p-3 bg-white/90 backdrop-blur-sm">
+                <p class="text-center text-primary font-semibold">Cherry Red</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Shop All Shades -->
+    <a href="products.html"
+       class="relative group rounded-xl overflow-hidden glass-card border border-white/40 block h-[250px]">
+
+        <img
             src="images/01.png"
-            alt="All Lipstick Shades"
+            alt="All Shades"
             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <span class="bg-white text-primary px-6 py-3 rounded-full font-label-caps text-label-caps shadow-lg">
-              Shop All Shades
+        />
+
+        <div class="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span class="bg-white text-primary px-6 py-3 rounded-full shadow-lg">
+                Shop All Shades
             </span>
-          </div>
-        </a>
+        </div>
+
+    </a>
+
+</div>
 
       </div>
     </div>
