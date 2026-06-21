@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>GasdiskueLips AR Video</title>
+
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+      background: white;
+      color: #6b5a5f;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .hint {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+      background: rgba(255,255,255,0.9);
+      color: #6b5a5f;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-size: 14px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<a href="product_details.html" class="back-btn">Back</a>
+<div class="hint">Scan the GasdiskueLips marker to watch the AR video</div>
+
+<a-scene
+  mindar-image="imageTargetSrc: targets/lipstick.mind;"
+  color-space="sRGB"
+  renderer="colorManagement: true, physicallyCorrectLights"
+  vr-mode-ui="enabled: false"
+  device-orientation-permission-ui="enabled: false">
+
+  <a-assets>
+    <video
+      id="promoVideo"
+      src="videos/promotion.mp4"
+      preload="auto"
+      loop
+      muted
+      playsinline
+      webkit-playsinline>
+    </video>
+  </a-assets>
+
+  <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+  <a-entity id="target" mindar-image-target="targetIndex: 0">
+
+    <a-video
+      src="#promoVideo"
+      width="1.6"
+      height="0.9"
+      position="0 0 0"
+      rotation="0 0 0">
+    </a-video>
+
+  </a-entity>
+
+</a-scene>
+
+<script>
+  const video = document.querySelector("#promoVideo");
+  const target = document.querySelector("#target");
+
+  target.addEventListener("targetFound", () => {
+    video.play();
+  });
+
+  target.addEventListener("targetLost", () => {
+    video.pause();
+  });
+</script>
+
+</body>
+</html>
