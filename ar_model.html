@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>GasdiskueLips AR Model</title>
+
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      z-index: 999;
+      background: white;
+      color: #6b5a5f;
+      padding: 10px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+<a href="product_details.html" class="back-btn">Back</a>
+
+<a-scene
+  mindar-image="imageTargetSrc: targets/lipstick.mind;"
+  color-space="sRGB"
+  renderer="colorManagement: true, physicallyCorrectLights"
+  vr-mode-ui="enabled: false"
+  device-orientation-permission-ui="enabled: false">
+
+  <a-assets>
+    <a-asset-item id="lipstickModel" src="models/lipstick.glb"></a-asset-item>
+  </a-assets>
+
+  <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+  <a-entity mindar-image-target="targetIndex: 0">
+
+    <a-gltf-model
+      src="#lipstickModel"
+      position="0 0 0"
+      rotation="0 0 0"
+      scale="0.5 0.5 0.5"
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 5000">
+    </a-gltf-model>
+
+    <a-text
+      value="GasdiskueLips"
+      position="0 -0.6 0"
+      align="center"
+      color="#6b5a5f"
+      scale="0.4 0.4 0.4">
+    </a-text>
+
+  </a-entity>
+
+</a-scene>
+
+</body>
+</html>
