@@ -12,6 +12,8 @@
       margin: 0;
       overflow: hidden;
       font-family: Arial, sans-serif;
+      /* Prevents the browser from refreshing when swiping down */
+      touch-action: none; 
     }
 
     .back-btn {
@@ -26,15 +28,117 @@
       text-decoration: none;
       font-weight: bold;
     }
+    
+    #start-overlay {
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(251, 249, 248, 0.9);
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    .start-btn {
+      background: #6b5a5f;
+      color: white;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 999px;
+      font-size: 16px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .hint-text {
+      color: #6b5a5f;
+      margin-top: 15px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
   </style>
+
+  <script>
+    // 1. Audio Handler
+    AFRAME.registerComponent('ar-audio-handler', {
+      init: function () {
+        const el = this.el;
+        const audio = document.querySelector('#storyAudio');
+
+        el.addEventListener('targetFound', () => { audio.play(); });
+        el.addEventListener('targetLost', () => { audio.pause(); });
+      }
+    });
+
+    // 2. Drag to Rotate Handler
+// 2. Multi-Axis Drag to Rotate Handler
+    AFRAME.registerComponent('drag-rotate', {
+      schema: { speed: {default: 1.5} },
+      init: function () {
+        this.isDragging = false;
+        // Store both X and Y coordinates
+        this.previousPosition = { x: 0, y: 0 };
+
+        const startDrag = (x, y) => {
+          this.isDragging = true;
+          this.previousPosition = { x: x, y: y };
+        };
+
+        const stopDrag = () => {
+          this.isDragging = false;
+        };
+
+        const onDrag = (x, y) => {
+          if (!this.isDragging) return;
+          
+          // Calculate how far the finger moved in both directions
+          const deltaX = x - this.previousPosition.x;
+          const deltaY = y - this.previousPosition.y;
+
+          // Horizontal swipe rotates around the Y axis
+          this.el.object3D.rotation.y += deltaX * (this.data.speed / 100);
+          
+          // Vertical swipe rotates around the X axis
+          this.el.object3D.rotation.x += deltaY * (this.data.speed / 100);
+
+          this.previousPosition = { x: x, y: y };
+        };
+
+        // Mouse Controls (For Desktop Testing)
+        document.addEventListener('mousedown', (e) => startDrag(e.clientX, e.clientY));
+        document.addEventListener('mouseup', stopDrag);
+        document.addEventListener('mousemove', (e) => onDrag(e.clientX, e.clientY));
+
+        // Touch Controls (For Mobile)
+        document.addEventListener('touchstart', (e) => startDrag(e.touches[0].clientX, e.touches[0].clientY));
+        document.addEventListener('touchend', stopDrag);
+        document.addEventListener('touchmove', (e) => onDrag(e.touches[0].clientX, e.touches[0].clientY));
+      }
+    });
+
+    // 3. Overlay Dismissal
+    document.addEventListener("DOMContentLoaded", function() {
+      const overlay = document.getElementById('start-overlay');
+      const startBtn = document.getElementById('user-start-btn');
+      
+      startBtn.addEventListener('click', function() {
+        overlay.style.display = 'none';
+      });
+    });
+  </script>
 </head>
 
 <body>
 
+<div id="start-overlay">
+  <h2 style="color: #6b5a5f; margin-bottom: 20px; text-align: center;">Ready to experience Rose Pink?</h2>
+  <button id="user-start-btn" class="start-btn">Tap to Start AR</button>
+  <div class="hint-text">Swipe left or right to rotate the product</div>
+</div>
+
 <a href="product_details.html" class="back-btn">Back</a>
 
 <a-scene
-  mindar-image="imageTargetSrc: targets/lipstick.mind;"
+  mindar-image="imageTargetSrc: targets/lipstick.mind; filterMinCF: 0.0001; filterBeta: 0.001; missTolerance: 5;"
   color-space="sRGB"
   renderer="colorManagement: true, physicallyCorrectLights"
   vr-mode-ui="enabled: false"
@@ -42,19 +146,20 @@
 
   <a-assets>
     <a-asset-item id="lipstickModel" src="models/base_basic_pbr.glb"></a-asset-item>
+    <audio id="storyAudio" src="assets_audio_Rose-pink-story.mp3" preload="auto" crossorigin="anonymous"></audio>
   </a-assets>
 
   <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
-  <a-entity mindar-image-target="targetIndex: 0">
+  <a-entity mindar-image-target="targetIndex: 0" ar-audio-handler>
 
-      <a-gltf-model
-    src="#lipstickModel"
-    position="0 0.15 0"
-    rotation="0 0 0"
-    scale="1 1 1"
-    animation="property: rotation; to: 0 360 0; loop: true; dur: 5000">
-  </a-gltf-model>
+    <a-gltf-model
+      src="#lipstickModel"
+      position="0 0.15 0"
+      rotation="0 0 0"
+      scale="1 1 1"
+      drag-rotate>
+    </a-gltf-model>
 
     <a-text
       value="GasdiskueLips"
